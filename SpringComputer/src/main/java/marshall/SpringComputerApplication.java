@@ -30,7 +30,7 @@ public class SpringComputerApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 		ApplicationContext appContext = new AnnotationConfigApplicationContext(BeanConfiguration.class);
-		
+		int i;//this is just to trigger a change to try and push it to github
 		Computer c = appContext.getBean("computer", Computer.class);
 		c.setPrice(1750.99);
 		repo.save(c);
@@ -39,10 +39,10 @@ public class SpringComputerApplication implements CommandLineRunner {
 		repo.save(d);
 		
 		List<Computer> allMyComputers = repo.findAll();
-		for(Computer people: allMyComputers) {
+		for(Computer people: allMyComputers) 										{
 			System.out.println(people.toString());
 		}
-		
+		//lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll
 		((AbstractApplicationContext) appContext).close();
 	
 	}
