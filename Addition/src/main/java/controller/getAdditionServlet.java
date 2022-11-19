@@ -36,16 +36,42 @@ public class getAdditionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//int Integer.parseInt(request.getParameter("userNumber"));
-		int userNumber1 = Integer.parseInt(request.getParameter("userNumber1"));
-		int userNumber2 = Integer.parseInt(request.getParameter("userNumber2"));
-		int userNumber3 = Integer.parseInt(request.getParameter("userNumber3"));
+		int userNumber1 = 0;
+		int userNumber2 = 0;
+		int userNumber3 = 0;
+		try {
+			if (!request.getParameter("userNumber1").equals("")) {
+				userNumber1 = Integer.parseInt(request.getParameter("userNumber1"));
+			}
+		} catch (Exception e) {
+			
+		}
+		try {
+			if (!request.getParameter("userNumber2").equals("")) {
+				userNumber2 = Integer.parseInt(request.getParameter("userNumber2"));
+	
+			}
+		} catch (Exception e) {
+			
+		}
+		try {
+			if (!request.getParameter("userNumber3").equals("")) {
+				userNumber3 = Integer.parseInt(request.getParameter("userNumber3"));
+			}
+		} catch (Exception e) {
+			
+		}
 		int total = userNumber1 + userNumber2 + userNumber3;
 		
 		Splitter split = new Splitter(total);
 		split.setSplits(total);
 		request.setAttribute("userAdditionPouch", split);
+		if (userNumber1 == 0 || userNumber2 == 0 || userNumber3 == 0) {
+			getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+
+		}else {
 		getServletContext().getRequestDispatcher("/result2.jsp").forward(request, response);
-		
+		}
 		//writer.println("Those numbers are equal to" + (userNumber1 + userNumber2 + userNumber3));
 		PrintWriter writer = response.getWriter();
 

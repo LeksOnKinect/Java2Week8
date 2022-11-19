@@ -35,8 +35,24 @@ public class getSubtractionServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int userNumber1 = Integer.parseInt(request.getParameter("userNumber1"));
-		int userNumber2 = Integer.parseInt(request.getParameter("userNumber2"));
+		int userNumber1 = 0;
+		int userNumber2 = 0;
+		try {
+			if (!request.getParameter("userNumber1").equals("")) {
+				userNumber1 = Integer.parseInt(request.getParameter("userNumber1"));
+			}
+		} catch (Exception e) {
+			
+		}
+		try {
+			if (!request.getParameter("userNumber2").equals("")) {
+				userNumber2 = Integer.parseInt(request.getParameter("userNumber2"));
+			}
+		} catch (Exception e) {
+			
+		}
+
+		//Integer.parseInt(request.getParameter("userNumber2"));
 		int difference = userNumber1 - userNumber2;
 		
 		Duper dupe = new Duper(difference);
